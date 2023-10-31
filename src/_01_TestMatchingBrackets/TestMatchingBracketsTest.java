@@ -3,7 +3,6 @@ package _01_TestMatchingBrackets;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Stack;
 
 import org.junit.Test;
 

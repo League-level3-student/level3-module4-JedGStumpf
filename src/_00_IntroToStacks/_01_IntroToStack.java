@@ -9,6 +9,24 @@ public class _01_IntroToStack {
     public static void main(String[] args) {
         // 1. Create a Stack of Doubles
         //    Don't forget to import the Stack class
+    	Stack<Double> stackDoubles = new Stack<Double>();
+    	
+    	Random ran = new Random();
+    	for (int i = 0; i < 100; i++) {
+    		stackDoubles.push(ran.nextDouble(0, 101));
+    	}
+    	
+    	System.out.println(stackDoubles.get(11));
+    	
+    	Double first = Double.valueOf(JOptionPane.showInputDialog("Enter your 1st Double: Low Number"));
+    	Double second = Double.valueOf(JOptionPane.showInputDialog("Enter your 1st Double: High Number"));
+    	
+    	while (! stackDoubles.isEmpty()) {
+    		Double temp = stackDoubles.pop();
+    		if (temp >= first && temp <= second) {
+//    			System.out.println(temp);
+    		}
+    	}
 
         // 2. Use a loop to push 100 random doubles between 0 and 100 to the Stack.
 

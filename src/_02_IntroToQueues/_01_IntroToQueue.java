@@ -1,4 +1,9 @@
 package _02_IntroToQueues;
+
+import java.util.ArrayDeque;
+import java.util.Random;
+import java.util.Stack;
+
 /* 
  * OBJECTIVE:
  * 1. Push 100 double values onto a Stack.
@@ -34,21 +39,59 @@ public class _01_IntroToQueue {
     public static void main(String[] args) {
         // 1. Create a Stack of Doubles using the Stack class
         //    Note: you have to use the capitalized Double and not double
+    	Stack<Double> stackDoubles = new Stack<Double>();
+    	Random ran = new Random();
+    	
 
         // 2. Use a loop to add 100 random doubles between 0 and 100 to the Stack
+    	for (int i = 0; i < 100; i++) {
+    		stackDoubles.push(ran.nextDouble(0, 100));
+    	}
 
         // 3. Create a Queue of Doubles using the ArrayDeque class
         //    Note: you have to use the capitalized Double and not double
+    	ArrayDeque<Double> queDoubles = new ArrayDeque<Double>();
 
-        // 4. Pop off 5 elements from the Stack and add them to the Queue 
+        // 4. Pop off 5 elements from the Stack and add them to the Queue
+    	for (int i = 0; i < 5; i++) {
+    		queDoubles.add(stackDoubles.pop());
+    	}
 
         // 5. Print and remove a random number of elements, from 1 to 5 elements,
         //    from the front of the Queue. Example:
         //    "removing 3 elements from Queue: 25 57 2"
+    	for (int i = 0; i < 3; i++) {
+    		System.out.println(queDoubles.remove());
+    	}
 
         // 6. Pop off as many elements from the stack to fill the Queue with 5
         //    elements. If there aren't enough elements in the Stack to fill the 
         //    queue, fill the queue as much as possible. 
+    	while (!stackDoubles.isEmpty() && !queDoubles.isEmpty()) {
+        	if (queDoubles.size() >= 5) {
+        		for (int i = 0; i < 5; i++) {
+            		System.out.println(queDoubles.remove());
+            	}
+        	} else {
+        		for (int i = 0; i < queDoubles.size(); i++) {
+            		System.out.println(queDoubles.remove());
+            	}
+        	}
+
+        	if (!stackDoubles.isEmpty()) {
+        		if (stackDoubles.size() >= 5) {
+                	for (int i = 0; i < 5; i++) {
+                		queDoubles.add(stackDoubles.pop());
+                	}
+        		} else {
+                	for (int i = 0; i < stackDoubles.size(); i++) {
+                		queDoubles.add(stackDoubles.pop());
+                	}
+
+        		}
+        	}
+        	System.out.println("\n\n");
+    	}
 
         // 7. Loop until there are no more elements in either the Stack or Queue
         //    and all the elements are printed
